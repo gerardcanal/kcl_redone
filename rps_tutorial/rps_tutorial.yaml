@@ -1,0 +1,22 @@
+functions:
+    - $(find rps_tutorial)/src/rps_tutorial.py
+
+topics:
+  robot_at:
+    params:
+        - kenny
+        - '*'
+    topic: /chatter
+    msg_type: std_msgs/String
+    #operation: "int(msg.data.split(' ')[-1])%2 == 0"
+
+
+services:
+  docked:
+      params:
+          - kenny
+      service: /test_service # Service
+      srv_type: std_srvs/SetBool # Srv type
+      time_between_calls: 1 # Time between calls in seconds
+      #request: SetBoolRequest(data=True) # Request creation
+      operation: "int(res.message.split(' ')[3])%2 == 0" # operation    
